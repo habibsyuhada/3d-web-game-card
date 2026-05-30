@@ -48,11 +48,11 @@
 
 | # | Story ID | Title | Complexity | Points | Dependencies | Status |
 |---|----------|-------|------------|--------|--------------|--------|
-| 5 | STORY-005 | Game Engine: Special Card Effects | Medium | 3 | STORY-001, 002, 003 | **Queued** |
-| 6 | STORY-006 | Game Engine: Bot AI Decision Tree | Low-Med | 3 | STORY-001, 002, 003 | **Queued** |
-| 7 | STORY-007 | Game Engine: Win Condition & Deadlock Resolution | Low | 2 | STORY-001, 002, 003 | **Queued** |
-| 8 | STORY-008 | Game Engine: Full Orchestration (initGame, resetGame) | Medium | 3 | STORY-001, 002, 003, 004 | **Queued** |
-| 9 | STORY-009 | Zustand Store Implementation (3 slices + selectors) | High | 8 | STORY-001 through 008 | **Queued** |
+| 5 | STORY-005 | Game Engine: Special Card Effects | Medium | 3 | STORY-001, 002, 003 | **Done** ✅ |
+| 6 | STORY-006 | Game Engine: Bot AI Decision Tree | Low-Med | 3 | STORY-001, 002, 003 | **Done** ✅ |
+| 7 | STORY-007 | Game Engine: Win Condition & Deadlock Resolution | Low | 2 | STORY-001, 002, 003 | **Done** ✅ |
+| 8 | STORY-008 | Game Engine: Full Orchestration (initGame, resetGame) | Medium | 3 | STORY-001, 002, 003, 004 | **Done** ✅ |
+| 9 | STORY-009 | Zustand Store Implementation (3 slices + selectors) | High | 8 | STORY-001 through 008 | **Done** ✅ |
 
 **Wave 2 Implementation Order:** 005 → 006 → 007 → 008 → 009  
 (Stories 005, 006, 007 can be parallelized since they all depend only on 003. Story 008 needs 004. Story 009 must come last as it depends on ALL engine modules.)  
@@ -217,4 +217,4 @@ WAVE 6
 
 ---
 
-*Last updated: 2026-05-30 — STORY-004 closed, Wave 1 COMPLETE*
+*Last updated: 2026-05-31 — STORY-008 closed, engine layer complete, ready for STORY-009 (Zustand Store)*
