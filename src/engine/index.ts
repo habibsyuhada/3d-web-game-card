@@ -16,4 +16,15 @@ export {
 // Player operations (STORY-004)
 export { eliminatePlayer, canPlayerAct, loseLife } from './player';
 
-// Additional engine modules will be added in STORY-005 through STORY-008
+// Special card effects (STORY-005)
+export { applySpecialEffect } from './special-cards';
+export type { SpecialEffectResult } from './special-cards';
+
+// Bot AI (STORY-006)
+export { decideBotPlay } from './bot-ai';
+
+// Win condition & deadlock resolution (STORY-007)
+export { checkWinCondition, resolveDeadlock, isDeadlock } from './win-condition';
+
+// Game orchestration (STORY-008)
+export { initGame, resetGame } from './game';
