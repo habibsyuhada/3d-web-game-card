@@ -1,6 +1,6 @@
 # STORY-005 — Game Engine: Special Card Effects
 
-**Status:** Ready
+**Status:** CLOSED
 
 ---
 
@@ -91,11 +91,11 @@ Per architecture Section 8.4, `applySpecialEffect` is a pure function that takes
 - STORY-003 (utility functions like `randomInt` from `src/utils/math.ts`)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed
+- [x] QA review passed
+- [x] Story closed
