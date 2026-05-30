@@ -1,6 +1,6 @@
 # STORY-010 — Title Screen & Fullscreen Entry
 
-**Status:** Ready
+**Status:** CLOSED
 
 ---
 
@@ -98,11 +98,11 @@ Per architecture Sections 10 and 15, the title screen is an HTML/Tailwind overla
 - STORY-009 (Zustand store with game slice and UI slice)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written (11 new tests)
+- [x] Tests pass locally (187/187)
+- [x] Dev notes created (DEV-NOTES-STORY-010.md)
+- [x] Scrum Master completion review passed (9.8/10)
+- [x] QA review passed (9.9/10, 0 defects)
+- [x] Story closed (2026-05-31)
