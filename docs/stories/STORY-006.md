@@ -1,6 +1,6 @@
 # STORY-006 — Game Engine: Bot AI Decision Tree
 
-**Status:** Ready
+**Status:** CLOSED
 
 ---
 
@@ -83,11 +83,11 @@ Per architecture Section 8.5, `decideBotPlay()` is a pure function that takes a 
 - STORY-003 (card validator `isCardPlayable`)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed (9.5/10)
+- [x] QA review passed (9.9/10, 0 defects)
+- [x] Story closed (2026-05-31)
