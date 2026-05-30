@@ -1,6 +1,6 @@
 # STORY-012 — 3D Card Model, Player Hand Rendering & Card Interaction
 
-**Status:** Ready
+**Status:** CLOSED
 
 ---
 
@@ -129,11 +129,11 @@ Per architecture Section 9 (Card3D Geometry), each card is composed of: a Rounde
 - STORY-011 (3D scene, Canvas, GameScene exist)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed (76/76)
+- [x] QA review passed (104/104, 0 defects)
+- [x] Story closed (2026-05-31)
