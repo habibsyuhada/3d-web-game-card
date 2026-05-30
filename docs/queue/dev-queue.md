@@ -4,8 +4,8 @@
 **Scrum Master:** SM Agent  
 **Total Stories:** 21  
 **Total Story Points:** 97  
-**Current Sprint:** Wave 1 (Foundation)  
-**Status:** Active — Ready for Development
+**Current Sprint:** Wave 4 (Animation & Loop)  
+**Status:** Active — Wave 3 Complete, Ready for Wave 4
 
 ---
 
@@ -15,8 +15,8 @@
 |------|-------|---------|--------|--------|
 | Wave 1 | Foundation | STORY-001, 002, 003, 004 | 13 | **Current Sprint** |
 | Wave 2 | Engine Completion & State | STORY-005, 006, 007, 008, 009 | 19 | Queued |
-| Wave 3 | 3D Scene & Entry | STORY-010, 011, 012 | 18 | Queued |
-| Wave 4 | Animation & Loop | STORY-013, 014, 015, 016 | 23 | Queued |
+| Wave 3 | 3D Scene & Entry | STORY-010, 011, 012 | 18 | **Complete** ✅ |
+| Wave 4 | Animation & Loop | STORY-013, 014, 015, 016 | 23 | **Current Sprint** |
 | Wave 5 | Assembly & VFX | STORY-017, 018, 019 | 11 | Queued |
 | Wave 6 | Performance & Testing | STORY-020, 021 | 13 | Queued |
 | **Total** | | **21 stories** | **97 pts** | |
@@ -68,9 +68,9 @@
 
 | # | Story ID | Title | Complexity | Points | Dependencies | Status |
 |---|----------|-------|------------|--------|--------------|--------|
-| 10 | STORY-010 | Title Screen & Fullscreen Entry | Medium | 5 | STORY-001, 008, 009 | **Queued** |
-| 11 | STORY-011 | 3D Scene Foundation (Canvas, Camera, Lighting, Table) | Medium-High | 5 | STORY-001, 009, 010 | **Queued** |
-| 12 | STORY-012 | 3D Card Model, Player Hand Rendering & Card Interaction | High | 8 | STORY-002, 003, 009, 011 | **Queued** |
+| 10 | STORY-010 | Title Screen & Fullscreen Entry | Medium | 3 | STORY-001, 008, 009 | **Done** |
+| 11 | STORY-011 | 3D Scene Foundation (Canvas, Camera, Lighting, Table) | Medium-High | 5 | STORY-001, 009, 010 | **Done** ✅ |
+| 12 | STORY-012 | 3D Card Model, Player Hand Rendering & Card Interaction | High | 8 | STORY-002, 003, 009, 011 | **Done** ✅ |
 
 **Wave 3 Implementation Order:** 010 → 011 → 012  
 (Sequential: title screen first so App.tsx has structure, then 3D scene, then cards within the scene.)  
@@ -217,4 +217,4 @@ WAVE 6
 
 ---
 
-*Last updated: 2026-05-31 — STORY-008 closed, engine layer complete, ready for STORY-009 (Zustand Store)*
+*Last updated: 2026-05-31 — STORY-012 (3D Card Model & Interaction) closed. Wave 3 COMPLETE (3/3 stories). Wave 4 next: STORY-013.*
