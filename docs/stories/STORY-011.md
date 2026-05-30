@@ -1,6 +1,6 @@
 # STORY-011 — 3D Scene Foundation (Canvas, Camera, Lighting, Table)
 
-**Status:** Ready
+**Status:** CLOSED
 
 ---
 
@@ -110,11 +110,11 @@ Per architecture Section 9, the camera is a PerspectiveCamera at position [0, 8,
 - STORY-010 (TitleScreen exists; App.tsx already conditionally renders)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed
+- [x] QA review passed
+- [x] Story closed
