@@ -1,6 +1,6 @@
 # STORY-013 — Life Tokens & Middle Pile 3D Rendering
 
-**Status:** Ready
+**Status:** Done
 
 ---
 
@@ -113,11 +113,11 @@ Per architecture Section 9, life tokens are low-poly heart/gem meshes (~60 tris 
 - STORY-012 (Card3D component reused in middle pile)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed
+- [x] QA review passed
+- [x] Story closed

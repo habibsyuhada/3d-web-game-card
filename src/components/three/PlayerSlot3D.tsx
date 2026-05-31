@@ -1,14 +1,16 @@
-// src/components/three/PlayerSlot3D.tsx — Player slot with CardHand + marker (STORY-012)
+// src/components/three/PlayerSlot3D.tsx — Player slot with CardHand + LifeTokens (STORY-012/013)
 //
-// Renders a single player's card hand at a given 3D position.
+// Renders a single player's card hand and life tokens at a given 3D position.
 // - Human (playerIndex 0): face-up cards, interactive taps, playability checks
 // - Bots (playerIndex 1–3): face-down cards, no interaction
 //
 // Also renders a subtle circle marker at the player's slot for spatial orientation.
+// Life tokens are rendered in front of the card hand (STORY-013).
 
 import { useGameStore } from '../../store';
-import { PlayerType } from '../../types';
+import { PlayerType, INITIAL_LIVES } from '../../types';
 import { CardHand } from './CardHand';
+import { LifeTokens } from './LifeTokens';
 import { useCardInteraction } from '../../hooks/useCardInteraction';
 
 interface PlayerSlot3DProps {
@@ -18,10 +20,11 @@ interface PlayerSlot3DProps {
 }
 
 /**
- * Renders a player's slot in the 3D scene: card hand + position marker.
+ * Renders a player's slot in the 3D scene: card hand + life tokens + position marker.
  *
  * The human slot (playerIndex 0) uses `useCardInteraction` to enable
  * tap-to-play. Bot slots render face-down, non-interactive cards.
+ * Life tokens appear in front of the card hand for all players.
  */
 export function PlayerSlot3D({
   playerIndex,
@@ -44,6 +47,13 @@ export function PlayerSlot3D({
         faceUp={isHuman}
         playableCardIds={isHuman ? playableCardIds : new Set()}
         onCardTap={isHuman ? handleCardTap : undefined}
+      />
+
+      {/* Life tokens — positioned in front of the card hand (STORY-013) */}
+      <LifeTokens
+        count={player.lives}
+        position={[0, 0.02, -0.7]}
+        maxLives={INITIAL_LIVES}
       />
 
       {/* Subtle circle marker at the base of the slot for spatial orientation */}

@@ -3,14 +3,52 @@
 // Renders inside an R3F <Canvas> and sets up:
 // - Lighting rig: ambient, key directional, fill directional, spot (pile)
 // - Table (procedural green felt surface)
-// - Middle pile placeholder (STORY-013)
-// - 4 player slot placeholders at cardinal positions (STORY-012)
+// - Middle pile — stacked played cards with value display (STORY-013)
+// - Deck pile — visual draw pile indicator (STORY-013)
+// - 4 player slots at cardinal positions with life tokens (STORY-012/013)
+// - Animation layer — card play/draw animations (STORY-014)
 
 import { Table3D } from './Table3D';
 import { MiddlePile3D } from './MiddlePile3D';
+import { DeckPile3D } from './DeckPile3D';
 import { PlayerSlot3D } from './PlayerSlot3D';
+import { CardAnimation } from './CardAnimation';
+import { CardDrawAnimation } from './CardDrawAnimation';
+import { useAnimationQueue } from '../../hooks/useAnimationQueue';
+import { useGameStore } from '../../store';
+import { CardType } from '../../types';
+import type { Card } from '../../types';
+
+/** Fallback card used when the original card cannot be resolved from state. */
+const FALLBACK_CARD: Card = {
+  id: 'unknown',
+  type: CardType.Number,
+  value: 1,
+  effect: null,
+};
 
 export function GameScene() {
+  const { currentAnimation, onAnimationComplete } = useAnimationQueue();
+  const middlePile = useGameStore((state) => state.middlePile);
+  const players = useGameStore((state) => state.players);
+
+  // Resolve card for card-play animation:
+  // The card has already been moved to middlePile by the store action,
+  // so we look it up there.
+  const resolvePlayedCard = (cardId?: string): Card => {
+    if (!cardId) return FALLBACK_CARD;
+    return middlePile.find((c) => c.id === cardId) ?? FALLBACK_CARD;
+  };
+
+  // Resolve card for card-draw animation:
+  // The card has already been added to the player's hand by the store action.
+  const resolveDrawnCard = (playerIndex: number, cardId?: string): Card => {
+    if (!cardId) return FALLBACK_CARD;
+    const player = players[playerIndex];
+    if (!player) return FALLBACK_CARD;
+    return player.hand.find((c) => c.id === cardId) ?? FALLBACK_CARD;
+  };
+
   return (
     <>
       {/* Lighting rig — per architecture Section 9 */}
@@ -27,14 +65,39 @@ export function GameScene() {
       {/* Table at center */}
       <Table3D />
 
-      {/* Middle pile placeholder — populated in STORY-013 */}
+      {/* Middle pile — played cards + value display (STORY-013) */}
       <MiddlePile3D />
+
+      {/* Deck pile — draw pile visual (STORY-013) */}
+      <DeckPile3D />
 
       {/* 4 player slots at cardinal positions */}
       <PlayerSlot3D playerIndex={0} position={[0, 0, 3.5]} rotation={[0, 0, 0]} />
       <PlayerSlot3D playerIndex={1} position={[-3, 0, 0]} rotation={[0, Math.PI / 2, 0]} />
       <PlayerSlot3D playerIndex={2} position={[0, 0, -3.5]} rotation={[0, Math.PI, 0]} />
       <PlayerSlot3D playerIndex={3} position={[3, 0, 0]} rotation={[0, -Math.PI / 2, 0]} />
+
+      {/* Animation layer — card play/draw animations (STORY-014) */}
+      {currentAnimation && currentAnimation.type === 'card-play' && (
+        <CardAnimation
+          card={resolvePlayedCard(currentAnimation.payload.cardId)}
+          fromPosition={currentAnimation.payload.fromPosition ?? [0, 0, 3.5]}
+          toPosition={currentAnimation.payload.toPosition ?? [0, 0.1, 0]}
+          faceUp={currentAnimation.payload.playerIndex === 0}
+          onComplete={onAnimationComplete}
+        />
+      )}
+      {currentAnimation && currentAnimation.type === 'card-draw' && (
+        <CardDrawAnimation
+          card={resolveDrawnCard(
+            currentAnimation.payload.playerIndex ?? 0,
+            currentAnimation.payload.cardId,
+          )}
+          toPosition={currentAnimation.payload.toPosition ?? [0, 0, 3.5]}
+          faceUp={currentAnimation.payload.playerIndex === 0}
+          onComplete={onAnimationComplete}
+        />
+      )}
     </>
   );
 }

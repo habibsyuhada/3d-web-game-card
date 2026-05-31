@@ -1,6 +1,6 @@
 # STORY-016 — HUD Overlay (Turn Indicator, Player Info, Deck Counter, Direction, Middle Pile Value)
 
-**Status:** Ready
+**Status:** Done
 
 ---
 
@@ -147,11 +147,11 @@ Per architecture Section 10, the HUD is an HTML overlay div positioned over the 
 - STORY-015 (Turn messages set by game loop)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed
+- [x] QA review passed
+- [x] Story closed

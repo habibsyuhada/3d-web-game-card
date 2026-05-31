@@ -4,8 +4,8 @@
 **Scrum Master:** SM Agent  
 **Total Stories:** 21  
 **Total Story Points:** 97  
-**Current Sprint:** Wave 4 (Animation & Loop)  
-**Status:** Active — Wave 3 Complete, Ready for Wave 4
+**Current Sprint:** Wave 5 (Assembly & VFX)  
+**Status:** Active — Wave 4 COMPLETE, Wave 5 Queued
 
 ---
 
@@ -16,7 +16,7 @@
 | Wave 1 | Foundation | STORY-001, 002, 003, 004 | 13 | **Current Sprint** |
 | Wave 2 | Engine Completion & State | STORY-005, 006, 007, 008, 009 | 19 | Queued |
 | Wave 3 | 3D Scene & Entry | STORY-010, 011, 012 | 18 | **Complete** ✅ |
-| Wave 4 | Animation & Loop | STORY-013, 014, 015, 016 | 23 | **Current Sprint** |
+| Wave 4 | Animation & Loop | STORY-013, 014, 015, 016 | 23 | **Complete** ✅ |
 | Wave 5 | Assembly & VFX | STORY-017, 018, 019 | 11 | Queued |
 | Wave 6 | Performance & Testing | STORY-020, 021 | 13 | Queued |
 | **Total** | | **21 stories** | **97 pts** | |
@@ -86,10 +86,10 @@
 
 | # | Story ID | Title | Complexity | Points | Dependencies | Status |
 |---|----------|-------|------------|--------|--------------|--------|
-| 13 | STORY-013 | Life Tokens & Middle Pile 3D Rendering | Medium | 5 | STORY-009, 011, 012 | **Queued** |
-| 14 | STORY-014 | Card Play Animation & Draw Animation | Medium-High | 5 | STORY-009, 012, 013 | **Queued** |
-| 15 | STORY-015 | Bot Turn Hook & Game Loop Orchestration | High | 8 | STORY-004, 005, 006, 007, 008, 009, 012, 014 | **Queued** |
-| 16 | STORY-016 | HUD Overlay (Turn, Player Info, Deck, Direction, Pile Value) | Medium | 5 | STORY-009, 010, 011, 015 | **Queued** |
+| 13 | STORY-013 | Life Tokens & Middle Pile 3D Rendering | Medium | 5 | STORY-009, 011, 012 | **Done** ✅ |
+| 14 | STORY-014 | Card Play Animation & Draw Animation | Medium-High | 5 | STORY-009, 012, 013 | **Done** ✅ |
+| 15 | STORY-015 | Bot Turn Hook & Game Loop Orchestration | High | 8 | STORY-004, 005, 006, 007, 008, 009, 012, 014 | **Done** ✅ |
+| 16 | STORY-016 | HUD Overlay (Turn, Player Info, Deck, Direction, Pile Value) | Medium | 5 | STORY-009, 010, 011, 015 | **Done** ✅ |
 
 **Wave 4 Implementation Order:** 013 → 014 → 015 → 016  
 (Life tokens/pile first for positions, then animations use those positions, then game loop drives everything, then HUD overlays display the loop's messages.)  
@@ -217,4 +217,4 @@ WAVE 6
 
 ---
 
-*Last updated: 2026-05-31 — STORY-012 (3D Card Model & Interaction) closed. Wave 3 COMPLETE (3/3 stories). Wave 4 next: STORY-013.*
+*Last updated: 2026-05-31 — STORY-016 (HUD Overlay) **Closed** ✅. **Wave 4 COMPLETE** — 4/4 stories, 23/23 points, 344/344 tests. Wave 5 (Assembly & VFX) queued next.*
