@@ -1,6 +1,6 @@
 # STORY-018 — Special Card Visual Effects (VFX)
 
-**Status:** Ready
+**Status:** Done
 
 ---
 

@@ -4,12 +4,15 @@
 //
 // STORY-015: Integrates useGameLoop and useBotTurn for full turn orchestration.
 // STORY-016: Integrates HUD overlay for player info, deck counter, direction, pile value.
+// STORY-017: Wraps Canvas in ErrorBoundary for WebGL error handling.
 
 import { Canvas } from '@react-three/fiber';
 import { useGameStore } from './store';
 import { TitleScreen } from './components/ui/TitleScreen';
 import { GameScene } from './components/three/GameScene';
 import { HUD } from './components/ui/HUD';
+import { GameOverScreen } from './components/ui/GameOverScreen';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { useGameLoop } from './hooks/useGameLoop';
 import { useBotTurn } from './hooks/useBotTurn';
 
@@ -30,26 +33,32 @@ function GameContainer() {
       className="w-screen h-screen touch-none relative"
       data-testid="game-container"
     >
-      <Canvas
-        dpr={[1, 1.5]}
-        gl={{
-          antialias: false,
-          powerPreference: 'high-performance',
-          alpha: false,
-        }}
-        camera={{
-          position: [0, 8, 6],
-          fov: 50,
-          near: 0.1,
-          far: 100,
-        }}
-        style={{ touchAction: 'none' }}
-      >
-        <GameScene />
-      </Canvas>
+      {/* STORY-017: ErrorBoundary catches WebGL/R3F rendering errors */}
+      <ErrorBoundary>
+        <Canvas
+          dpr={[1, 1.5]}
+          gl={{
+            antialias: false,
+            powerPreference: 'high-performance',
+            alpha: false,
+          }}
+          camera={{
+            position: [0, 8, 6],
+            fov: 50,
+            near: 0.1,
+            far: 100,
+          }}
+          style={{ touchAction: 'none' }}
+        >
+          <GameScene />
+        </Canvas>
+      </ErrorBoundary>
 
       {/* STORY-016: HUD overlay — all game info & turn messages */}
       <HUD />
+
+      {/* STORY-019: Game Over Screen — victory/defeat overlay with Play Again */}
+      <GameOverScreen />
     </div>
   );
 }

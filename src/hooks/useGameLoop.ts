@@ -112,7 +112,11 @@ export function useGameLoop(): void {
         handlePostAction(state.currentPlayerIndex);
 
         const afterState = useGameStore.getState();
-        if (afterState.gameStatus === GameStatus.Playing) {
+        // STORY-019: If game is finished after post-action, show game-over screen
+        if (afterState.gameStatus === GameStatus.Finished) {
+          afterState.setShowGameOver(true);
+          afterState.setTurnMessage('');
+        } else if (afterState.gameStatus === GameStatus.Playing) {
           afterState.advanceTurn();
         }
         // Reset message flag for next human turn

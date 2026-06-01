@@ -72,6 +72,12 @@ export function useCardInteraction(playerIndex: number) {
       drawCard(playerIndex);
       setTurnMessage('You played a card');
 
+      // STORY-018: If the played card is a special card, dispatch VFX at middle pile
+      const playedCard = playableCards.find((c) => c.id === cardId);
+      if (playedCard && playedCard.effect) {
+        useGameStore.getState().setActiveVFX(playedCard.effect, [0, 0.5, 0]);
+      }
+
       // Detect whether a draw actually occurred by comparing hand sizes.
       // Before play: N cards. After play: N-1 cards. After draw: N cards (if deck non-empty) or N-1 (if empty).
       const handSizeAfterPlayDraw =

@@ -14,9 +14,10 @@ import { DeckPile3D } from './DeckPile3D';
 import { PlayerSlot3D } from './PlayerSlot3D';
 import { CardAnimation } from './CardAnimation';
 import { CardDrawAnimation } from './CardDrawAnimation';
+import { BombVFX, NuclearVFX, ReverseVFX, SkipVFX, RandomVFX } from './vfx';
 import { useAnimationQueue } from '../../hooks/useAnimationQueue';
 import { useGameStore } from '../../store';
-import { CardType } from '../../types';
+import { CardType, SpecialEffect } from '../../types';
 import type { Card } from '../../types';
 
 /** Fallback card used when the original card cannot be resolved from state. */
@@ -31,6 +32,14 @@ export function GameScene() {
   const { currentAnimation, onAnimationComplete } = useAnimationQueue();
   const middlePile = useGameStore((state) => state.middlePile);
   const players = useGameStore((state) => state.players);
+
+  // STORY-018: Read active VFX state from animation slice.
+  // VFX components render conditionally based on activeVFX and auto-unmount
+  // via their onComplete callback.
+  const activeVFX = useGameStore((state) => state.activeVFX);
+  const vfxPosition = useGameStore((state) => state.vfxPosition);
+  const lastValue = useGameStore((state) => state.lastValue);
+  const setActiveVFX = useGameStore((state) => state.setActiveVFX);
 
   // Resolve card for card-play animation:
   // The card has already been moved to middlePile by the store action,
@@ -97,6 +106,43 @@ export function GameScene() {
           faceUp={currentAnimation.payload.playerIndex === 0}
           onComplete={onAnimationComplete}
         />
+      )}
+
+      {/* VFX layer — STORY-018: Special card visual effects */}
+      {activeVFX !== null && vfxPosition !== null && (
+        <>
+          {activeVFX === SpecialEffect.Bomb && (
+            <BombVFX
+              position={vfxPosition}
+              onComplete={() => setActiveVFX(null)}
+            />
+          )}
+          {activeVFX === SpecialEffect.Nuclear && (
+            <NuclearVFX
+              position={vfxPosition}
+              onComplete={() => setActiveVFX(null)}
+            />
+          )}
+          {activeVFX === SpecialEffect.Reverse && (
+            <ReverseVFX
+              position={vfxPosition}
+              onComplete={() => setActiveVFX(null)}
+            />
+          )}
+          {activeVFX === SpecialEffect.Skip && (
+            <SkipVFX
+              position={vfxPosition}
+              onComplete={() => setActiveVFX(null)}
+            />
+          )}
+          {activeVFX === SpecialEffect.Random && (
+            <RandomVFX
+              position={vfxPosition}
+              finalValue={lastValue ?? 7}
+              onComplete={() => setActiveVFX(null)}
+            />
+          )}
+        </>
       )}
     </>
   );

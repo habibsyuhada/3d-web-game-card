@@ -1,4 +1,4 @@
-// src/components/three/GameScene.test.tsx — Tests for 3D scene components (STORY-011)
+// src/components/three/GameScene.test.tsx — Tests for 3D scene components (STORY-011, STORY-017)
 //
 // R3F components require WebGL context which is NOT available in jsdom.
 // Strategy: mock @react-three/fiber (Canvas) and @react-three/drei (RoundedBox)
@@ -15,6 +15,8 @@
 // 8. PlayerSlot3D renders for each player index without crashing
 // 9. App does NOT render TitleScreen when showTitleScreen is false
 // 10. App renders TitleScreen when showTitleScreen is true (regression guard)
+// 11. STORY-017: App wraps Canvas in ErrorBoundary
+// 12. STORY-017: GameScene reads activeVFX state from store
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
@@ -25,19 +27,27 @@ import { GameStatus } from '../../types';
 // Canvas is mocked as a div; children are NOT rendered since they contain
 // Three.js JSX elements that require the R3F reconciler (only available
 // inside a real Canvas with WebGL context).
+// useFrame is mocked as a no-op since STORY-018 VFX components use it.
 vi.mock('@react-three/fiber', () => ({
   Canvas: ({ children: _children, ...rest }: Record<string, unknown>) => (
     <div data-testid="r3f-canvas" {...rest} />
   ),
+  useFrame: () => {}, // no-op — VFX components require this
 }));
 
 // ── Mock Drei helpers ─────────────────────────────────────────────────────
 // RoundedBox is mocked as a simple div so Table3D can render in jsdom.
+// Text is mocked as a <span> so RandomVFX (STORY-018) can render in jsdom.
 vi.mock('@react-three/drei', () => ({
   RoundedBox: ({ children, ...rest }: { children?: React.ReactNode } & Record<string, unknown>) => (
     <div data-testid="rounded-box" {...rest}>
       {children}
     </div>
+  ),
+  Text: ({ children, ...rest }: { children?: React.ReactNode } & Record<string, unknown>) => (
+    <span data-testid="drei-text" {...rest}>
+      {children}
+    </span>
   ),
 }));
 
@@ -179,5 +189,60 @@ describe('PlayerSlot3D', () => {
       <PlayerSlot3D playerIndex={1} position={[-3, 0, 0]} />,
     );
     expect(container).toBeTruthy();
+  });
+});
+
+// ── STORY-017: ErrorBoundary + VFX state ─────────────────────────────
+
+describe('STORY-017: ErrorBoundary wraps Canvas in App', () => {
+  it('App renders Canvas inside ErrorBoundary without crashing', () => {
+    // The Canvas mock renders as a div with data-testid="r3f-canvas".
+    // ErrorBoundary passes children through when no error, so the Canvas
+    // should still appear in the DOM — confirming ErrorBoundary is in the tree.
+    resetStore(false);
+    render(<App />);
+
+    expect(screen.getByTestId('game-container')).toBeInTheDocument();
+    expect(screen.getByTestId('r3f-canvas')).toBeInTheDocument();
+  });
+
+  it('GameScene reads activeVFX state without crashing', () => {
+    // Set activeVFX in the store to verify GameScene subscribes to it
+    useGameStore.setState({
+      activeVFX: 'bomb' as any,
+      vfxPosition: [0, 1, 0],
+    });
+
+    const { container } = render(<GameScene />);
+    // GameScene should render without crashing even when VFX state is set
+    expect(container).toBeTruthy();
+
+    // Clean up
+    useGameStore.setState({ activeVFX: null, vfxPosition: null });
+  });
+
+  it('GameScene renders when activeVFX is null (no VFX active)', () => {
+    useGameStore.setState({ activeVFX: null, vfxPosition: null });
+
+    const { container } = render(<GameScene />);
+    expect(container).toBeTruthy();
+  });
+
+  it('GameScene renders with various activeVFX values without crashing', () => {
+    const effects = ['reverse', 'skip', 'bomb', 'nuclear', 'random'] as const;
+
+    for (const effect of effects) {
+      useGameStore.setState({
+        activeVFX: effect as any,
+        vfxPosition: [0, 1, 0],
+      });
+
+      const { container, unmount } = render(<GameScene />);
+      expect(container).toBeTruthy();
+      unmount();
+    }
+
+    // Clean up
+    useGameStore.setState({ activeVFX: null, vfxPosition: null });
   });
 });

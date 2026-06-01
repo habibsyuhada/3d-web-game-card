@@ -1,6 +1,6 @@
 # STORY-017 — Full Game Scene Assembly
 
-**Status:** Ready
+**Status:** Done
 
 ---
 
@@ -105,11 +105,11 @@ Per architecture Section 9 (Scene Hierarchy), `GameScene` is the root R3F compon
 - STORY-014 (Card animations)
 
 ## Definition of Done
-- [ ] Story context reviewed by Developer
-- [ ] Code implemented
-- [ ] Tests written
-- [ ] Tests pass locally
-- [ ] Dev notes created
-- [ ] Scrum Master completion review passed
-- [ ] QA review passed
-- [ ] Story closed
+- [x] Story context reviewed by Developer
+- [x] Code implemented
+- [x] Tests written
+- [x] Tests pass locally
+- [x] Dev notes created
+- [x] Scrum Master completion review passed
+- [x] QA review passed
+- [x] Story closed

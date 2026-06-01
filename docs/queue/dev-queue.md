@@ -4,8 +4,8 @@
 **Scrum Master:** SM Agent  
 **Total Stories:** 21  
 **Total Story Points:** 97  
-**Current Sprint:** Wave 5 (Assembly & VFX)  
-**Status:** Active — Wave 4 COMPLETE, Wave 5 Queued
+**Current Sprint:** Wave 5 (Assembly & VFX) — COMPLETE  
+**Status:** Active — Wave 5 COMPLETE. Wave 6 (Performance & Testing) Queued.
 
 ---
 
@@ -13,17 +13,17 @@
 
 | Wave | Focus | Stories | Points | Status |
 |------|-------|---------|--------|--------|
-| Wave 1 | Foundation | STORY-001, 002, 003, 004 | 13 | **Current Sprint** |
-| Wave 2 | Engine Completion & State | STORY-005, 006, 007, 008, 009 | 19 | Queued |
+| Wave 1 | Foundation | STORY-001, 002, 003, 004 | 13 | **Complete** ✅ |
+| Wave 2 | Engine Completion & State | STORY-005, 006, 007, 008, 009 | 19 | **Complete** ✅ |
 | Wave 3 | 3D Scene & Entry | STORY-010, 011, 012 | 18 | **Complete** ✅ |
 | Wave 4 | Animation & Loop | STORY-013, 014, 015, 016 | 23 | **Complete** ✅ |
-| Wave 5 | Assembly & VFX | STORY-017, 018, 019 | 11 | Queued |
-| Wave 6 | Performance & Testing | STORY-020, 021 | 13 | Queued |
+| Wave 5 | Assembly & VFX | STORY-017, 018, 019 | 11 | **Complete** ✅ |
+| Wave 6 | Performance & Testing | STORY-020, 021 | 13 | **Current Sprint** |
 | **Total** | | **21 stories** | **97 pts** | |
 
 ---
 
-## Wave 1 — Foundation (Current Sprint)
+## Wave 1 — Foundation (Complete)
 
 > **Goal:** Project scaffolding, type system, and core engine primitives.  
 > **Exit Criteria:** All engine primitives pass unit tests; project builds cleanly.
@@ -105,14 +105,15 @@
 
 | # | Story ID | Title | Complexity | Points | Dependencies | Status |
 |---|----------|-------|------------|--------|--------------|--------|
-| 17 | STORY-017 | Full Game Scene Assembly | Medium | 3 | STORY-011, 012, 013, 014 | **Queued** |
-| 18 | STORY-018 | Special Card Visual Effects (VFX) | Medium-High | 5 | STORY-009, 014, 017 | **Queued** |
-| 19 | STORY-019 | Game Over Screen & Play Again | Medium | 3 | STORY-009, 015, 016 | **Queued** |
+| 17 | STORY-017 | Full Game Scene Assembly | Medium | 3 | STORY-011, 012, 013, 014 | **Done** ✅ |
+| 18 | STORY-018 | Special Card Visual Effects (VFX) | Medium-High | 5 | STORY-009, 014, 017 | **Done** ✅ |
+| 19 | STORY-019 | Game Over Screen & Play Again | Medium | 3 | STORY-009, 015, 016 | **Done** ✅ |
 
 **Wave 5 Implementation Order:** 017 → 018 → 019  
 (Assemble scene first, then add VFX into it, then game over screen which is independent of VFX but needs game loop.)  
 **Wave 5 Total:** 11 story points  
-**Key Deliverable:** Visually complete game with VFX for all special cards, elimination animation, and replayable game flow.
+**Key Deliverable:** Visually complete game with VFX for all special cards, elimination animation, and replayable game flow.  
+**Wave 5 Status: COMPLETE** — 3/3 stories closed, 11/11 points, 397 tests, 0 defects.
 
 ---
 
@@ -217,4 +218,4 @@ WAVE 6
 
 ---
 
-*Last updated: 2026-05-31 — STORY-016 (HUD Overlay) **Closed** ✅. **Wave 4 COMPLETE** — 4/4 stories, 23/23 points, 344/344 tests. Wave 5 (Assembly & VFX) queued next.*
+*Last updated: 2026-05-31 — STORY-019 (Game Over Screen & Play Again) **Done** ✅. **Wave 5 (Assembly & VFX) COMPLETE** — 3/3 stories, 11/11 points. Wave 6 (Performance & Testing) is next. 19/21 stories closed; 2 queued.*

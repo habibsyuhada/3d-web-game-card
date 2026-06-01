@@ -132,9 +132,13 @@ export function useBotTurn(): void {
       // Post-action: check elimination, winner, deadlock
       handlePostAction(state.currentPlayerIndex);
 
-      // Advance turn after bot play animations complete
+      // STORY-019: If game is finished after post-action, show game-over screen
       const latestState = useGameStore.getState();
-      if (latestState.gameStatus === GameStatus.Playing) {
+      if (latestState.gameStatus === GameStatus.Finished) {
+        latestState.setShowGameOver(true);
+        latestState.setTurnMessage('');
+      } else if (latestState.gameStatus === GameStatus.Playing) {
+        // Advance turn after bot play animations complete
         latestState.advanceTurn();
       }
       return;
@@ -180,6 +184,13 @@ export function useBotTurn(): void {
         // Dispatch play + draw
         latestState.playCard(playerIdx, cardId);
         latestState.drawCard(playerIdx);
+
+        // STORY-018: If the played card is a special card, dispatch VFX
+        const playedCardAfter =
+          useGameStore.getState().middlePile.find((c) => c.id === cardId);
+        if (playedCardAfter && playedCardAfter.effect) {
+          useGameStore.getState().setActiveVFX(playedCardAfter.effect, [0, 0.5, 0]);
+        }
 
         // Update message
         const updatedState = useGameStore.getState();
@@ -236,9 +247,13 @@ export function useBotTurn(): void {
         // Post-action checks
         handlePostAction(playerIdx);
 
-        // Advance turn immediately (no animation for life loss in MVP)
+        // STORY-019: If game is finished after post-action, show game-over screen
         const afterState = useGameStore.getState();
-        if (afterState.gameStatus === GameStatus.Playing) {
+        if (afterState.gameStatus === GameStatus.Finished) {
+          afterState.setShowGameOver(true);
+          afterState.setTurnMessage('');
+        } else if (afterState.gameStatus === GameStatus.Playing) {
+          // Advance turn immediately (no animation for life loss in MVP)
           afterState.advanceTurn();
         }
         timerActiveRef.current = false;
