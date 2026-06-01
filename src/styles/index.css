@@ -16,4 +16,21 @@ body,
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  background: #1a1a2e;
+}
+
+/* iOS Safari CSS fullscreen fallback (STORY-020) */
+.css-fullscreen-active {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+/* Prevent text selection and double-tap zoom on interactive elements (STORY-020) */
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }

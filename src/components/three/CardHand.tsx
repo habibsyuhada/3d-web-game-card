@@ -7,8 +7,9 @@
 //
 // Cards are interactive only if their ID is in playableCardIds.
 // Bot hands are face-down and always pass `disabled={false}` (they cannot be tapped).
+// React.memo prevents unnecessary re-renders (STORY-020).
 
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import type { Card } from '../../types';
 import { Card3D } from './Card3D';
 
@@ -64,7 +65,7 @@ function computeFanLayout(count: number): CardLayout[] {
  *     are uniformly face-down). `onCardTap` will be undefined so they
  *     receive no interaction anyway.
  */
-export function CardHand({
+export const CardHand = memo(function CardHand({
   cards,
   faceUp,
   playableCardIds,
@@ -96,4 +97,4 @@ export function CardHand({
       })}
     </group>
   );
-}
+});

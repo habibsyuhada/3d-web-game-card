@@ -17,14 +17,15 @@ import { useGameStore } from '../../store';
  * If fullscreen fails, the game still proceeds (FR-004 fallback).
  */
 export function TitleScreen() {
-  const { enterFullscreen, isSupported } = useFullscreen();
+  const { enterFullscreen, isSupported, isStandalone } = useFullscreen();
   const setFullscreen = useGameStore((s) => s.setFullscreen);
   const setShowTitleScreen = useGameStore((s) => s.setShowTitleScreen);
   const initGame = useGameStore((s) => s.initGame);
 
   const handlePlay = async () => {
     try {
-      if (isSupported) {
+      // In standalone PWA mode, fullscreen is already active — skip fullscreen request
+      if (!isStandalone && isSupported) {
         await enterFullscreen();
       }
       setFullscreen(true);
@@ -53,7 +54,7 @@ export function TitleScreen() {
           className="px-8 py-4 text-2xl font-bold bg-yellow-400 text-purple-900 rounded-lg shadow-lg hover:bg-yellow-300 active:scale-95 transition-transform touch-manipulation"
           style={{ minWidth: '48px', minHeight: '48px' }}
         >
-          PLAY FULLSCREEN
+          {isStandalone ? 'PLAY' : 'PLAY FULLSCREEN'}
         </button>
       </div>
     </div>

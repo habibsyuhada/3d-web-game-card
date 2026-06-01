@@ -6,7 +6,9 @@
 //
 // Also renders a subtle circle marker at the player's slot for spatial orientation.
 // Life tokens are rendered in front of the card hand (STORY-013).
+// React.memo prevents unnecessary re-renders (STORY-020).
 
+import { memo } from 'react';
 import { useGameStore } from '../../store';
 import { PlayerType, INITIAL_LIVES } from '../../types';
 import { CardHand } from './CardHand';
@@ -26,7 +28,7 @@ interface PlayerSlot3DProps {
  * tap-to-play. Bot slots render face-down, non-interactive cards.
  * Life tokens appear in front of the card hand for all players.
  */
-export function PlayerSlot3D({
+export const PlayerSlot3D = memo(function PlayerSlot3D({
   playerIndex,
   position,
   rotation = [0, 0, 0],
@@ -67,4 +69,4 @@ export function PlayerSlot3D({
       </mesh>
     </group>
   );
-}
+});

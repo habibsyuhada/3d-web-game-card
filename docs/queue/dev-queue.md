@@ -4,8 +4,8 @@
 **Scrum Master:** SM Agent  
 **Total Stories:** 21  
 **Total Story Points:** 97  
-**Current Sprint:** Wave 5 (Assembly & VFX) — COMPLETE  
-**Status:** Active — Wave 5 COMPLETE. Wave 6 (Performance & Testing) Queued.
+**Current Sprint:** Wave 6 (Performance & Testing) — FINAL SPRINT  
+**Status:** COMPLETE — ALL 21 stories closed. Project MVP-COMPLETE. 97/97 points. 565 tests. 0 defects.
 
 ---
 
@@ -18,7 +18,7 @@
 | Wave 3 | 3D Scene & Entry | STORY-010, 011, 012 | 18 | **Complete** ✅ |
 | Wave 4 | Animation & Loop | STORY-013, 014, 015, 016 | 23 | **Complete** ✅ |
 | Wave 5 | Assembly & VFX | STORY-017, 018, 019 | 11 | **Complete** ✅ |
-| Wave 6 | Performance & Testing | STORY-020, 021 | 13 | **Current Sprint** |
+| Wave 6 | Performance & Testing | STORY-020, 021 | 13 | **Complete** ✅ |
 | **Total** | | **21 stories** | **97 pts** | |
 
 ---
@@ -124,13 +124,14 @@
 
 | # | Story ID | Title | Complexity | Points | Dependencies | Status |
 |---|----------|-------|------------|--------|--------------|--------|
-| 20 | STORY-020 | Mobile Optimization, Performance Tuning & iOS Fallback | Medium-High | 5 | STORY-010, 017, 018, 019 + all prior | **Queued** |
-| 21 | STORY-021 | Integration Testing & End-to-End Game Validation | High | 8 | ALL previous stories (001-020) | **Queued** |
+| 20 | STORY-020 | Mobile Optimization, Performance Tuning & iOS Fallback | Medium-High | 5 | STORY-010, 017, 018, 019 + all prior | **Done** ✅ |
+| 21 | STORY-021 | Integration Testing & End-to-End Game Validation | High | 8 | ALL previous stories (001-020) | **Done** ✅ |
 
 **Wave 6 Implementation Order:** 020 → 021  
 (Optimize first so performance tests run against the final codebase, then validate everything.)  
 **Wave 6 Total:** 13 story points  
-**Key Deliverable:** Production-ready MVP passing all acceptance criteria and NFRs.
+**Key Deliverable:** Production-ready MVP passing all acceptance criteria and NFRs.  
+**Wave 6 Status: COMPLETE** — 2/2 stories closed, 13/13 points, 565 tests, 0 defects. **PROJECT MVP-COMPLETE.**
 
 ---
 
@@ -218,4 +219,4 @@ WAVE 6
 
 ---
 
-*Last updated: 2026-05-31 — STORY-019 (Game Over Screen & Play Again) **Done** ✅. **Wave 5 (Assembly & VFX) COMPLETE** — 3/3 stories, 11/11 points. Wave 6 (Performance & Testing) is next. 19/21 stories closed; 2 queued.*
+*Last updated: 2026-06-01 — ALL 21 STORIES CLOSED. PROJECT MVP-COMPLETE. 97/97 story points earned. 565 tests passing across 44 files. Coverage: engine 98.9% lines, store 98.1% lines. 0 defects. All 6 waves complete. The Zinky Zoogle 3D Card Game project is finished.*

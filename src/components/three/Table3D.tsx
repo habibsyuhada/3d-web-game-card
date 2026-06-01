@@ -6,10 +6,12 @@
 // - Green felt color: #1a472a (deep green, matte)
 // - Roughness 0.8, metalness 0.1 for fabric look
 // - RoundedBox from Drei with radius 0.05, smoothness 2 (low-poly ~200 triangles)
+// - React.memo prevents unnecessary re-renders (STORY-020)
 
+import { memo } from 'react';
 import { RoundedBox } from '@react-three/drei';
 
-export function Table3D() {
+export const Table3D = memo(function Table3D() {
   return (
     <RoundedBox
       args={[8, 0.1, 6]}
@@ -20,4 +22,4 @@ export function Table3D() {
       <meshStandardMaterial color="#1a472a" roughness={0.8} metalness={0.1} />
     </RoundedBox>
   );
-}
+});
